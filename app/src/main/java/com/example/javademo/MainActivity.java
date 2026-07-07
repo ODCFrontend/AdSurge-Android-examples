@@ -41,6 +41,8 @@ import com.adsurge.adn.ads.appopen.AppOpenAdListener;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.android.material.color.DynamicColors;
+
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
     
@@ -81,6 +83,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        DynamicColors.applyToActivityIfAvailable(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 

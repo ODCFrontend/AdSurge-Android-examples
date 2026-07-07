@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F5F5F7">
+    android:background="?android:attr/colorBackground">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -19,7 +19,7 @@
             android:layout_height="?attr/actionBarSize"
             app:title="AdSurge Demo"
             app:titleCentered="true"
-            app:titleTextColor="#1D1D1F" />
+            app:titleTextColor="?attr/colorOnSurface" />
 
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -41,9 +41,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="24dp"
                 app:cardCornerRadius="20dp"
-                app:cardElevation="8dp"
+                app:cardElevation="0dp"
                 app:strokeWidth="0dp"
-                app:cardBackgroundColor="#FFFFFF">
+                app:cardBackgroundColor="?attr/colorSurfaceVariant">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -57,7 +57,7 @@
                         android:text="SDK Status"
                         android:textSize="18sp"
                         android:textStyle="bold"
-                        android:textColor="#1D1D1F"
+                        android:textColor="?attr/colorOnSurface"
                         android:layout_marginBottom="8dp" />
 
                     <TextView
@@ -66,7 +66,7 @@
                         android:layout_height="wrap_content"
                         android:text="Initializing..."
                         android:textSize="16sp"
-                        android:textColor="#86868B" />
+                        android:textColor="?attr/colorOnSurfaceVariant" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
@@ -76,9 +76,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="24dp"
                 app:cardCornerRadius="20dp"
-                app:cardElevation="8dp"
+                app:cardElevation="0dp"
                 app:strokeWidth="0dp"
-                app:cardBackgroundColor="#FFFFFF">
+                app:cardBackgroundColor="?attr/colorSurfaceVariant">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -92,7 +92,7 @@
                         android:text="Interstitial Ad"
                         android:textSize="20sp"
                         android:textStyle="bold"
-                        android:textColor="#1D1D1F"
+                        android:textColor="?attr/colorOnSurface"
                         android:layout_marginBottom="4dp" />
                         
                     <TextView
@@ -101,7 +101,7 @@
                         android:layout_height="wrap_content"
                         android:text="Loading..."
                         android:textSize="14sp"
-                        android:textColor="#86868B"
+                        android:textColor="?attr/colorOnSurfaceVariant"
                         android:layout_marginBottom="16dp" />
 
                     <com.google.android.material.button.MaterialButton
@@ -121,9 +121,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="24dp"
                 app:cardCornerRadius="20dp"
-                app:cardElevation="8dp"
+                app:cardElevation="0dp"
                 app:strokeWidth="0dp"
-                app:cardBackgroundColor="#FFFFFF">
+                app:cardBackgroundColor="?attr/colorSurfaceVariant">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -137,7 +137,7 @@
                         android:text="Rewarded Ad"
                         android:textSize="20sp"
                         android:textStyle="bold"
-                        android:textColor="#1D1D1F"
+                        android:textColor="?attr/colorOnSurface"
                         android:layout_marginBottom="4dp" />
                         
                     <TextView
@@ -146,7 +146,7 @@
                         android:layout_height="wrap_content"
                         android:text="Loading..."
                         android:textSize="14sp"
-                        android:textColor="#86868B"
+                        android:textColor="?attr/colorOnSurfaceVariant"
                         android:layout_marginBottom="16dp" />
 
                     <com.google.android.material.button.MaterialButton
@@ -166,9 +166,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="24dp"
                 app:cardCornerRadius="20dp"
-                app:cardElevation="8dp"
+                app:cardElevation="0dp"
                 app:strokeWidth="0dp"
-                app:cardBackgroundColor="#FFFFFF">
+                app:cardBackgroundColor="?attr/colorSurfaceVariant">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -182,7 +182,7 @@
                         android:text="Banner Ad"
                         android:textSize="20sp"
                         android:textStyle="bold"
-                        android:textColor="#1D1D1F"
+                        android:textColor="?attr/colorOnSurface"
                         android:layout_marginBottom="4dp" />
                         
                     <TextView
@@ -191,7 +191,7 @@
                         android:layout_height="wrap_content"
                         android:text="Loading..."
                         android:textSize="14sp"
-                        android:textColor="#86868B"
+                        android:textColor="?attr/colorOnSurfaceVariant"
                         android:layout_marginBottom="16dp" />
 
                     <FrameLayout
@@ -209,9 +209,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="24dp"
                 app:cardCornerRadius="20dp"
-                app:cardElevation="8dp"
+                app:cardElevation="0dp"
                 app:strokeWidth="0dp"
-                app:cardBackgroundColor="#FFFFFF">
+                app:cardBackgroundColor="?attr/colorSurfaceVariant">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -225,7 +225,7 @@
                         android:text="Native Ad"
                         android:textSize="20sp"
                         android:textStyle="bold"
-                        android:textColor="#1D1D1F"
+                        android:textColor="?attr/colorOnSurface"
                         android:layout_marginBottom="4dp" />
                         
                     <TextView
@@ -234,7 +234,7 @@
                         android:layout_height="wrap_content"
                         android:text="Loading..."
                         android:textSize="14sp"
-                        android:textColor="#86868B"
+                        android:textColor="?attr/colorOnSurfaceVariant"
                         android:layout_marginBottom="16dp" />
 
                     <FrameLayout
@@ -251,9 +251,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="24dp"
                 app:cardCornerRadius="20dp"
-                app:cardElevation="8dp"
+                app:cardElevation="0dp"
                 app:strokeWidth="0dp"
-                app:cardBackgroundColor="#FFFFFF">
+                app:cardBackgroundColor="?attr/colorSurfaceVariant">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -267,7 +267,7 @@
                         android:text="App Open Ad"
                         android:textSize="20sp"
                         android:textStyle="bold"
-                        android:textColor="#1D1D1F"
+                        android:textColor="?attr/colorOnSurface"
                         android:layout_marginBottom="4dp" />
                         
                     <TextView
@@ -276,7 +276,7 @@
                         android:layout_height="wrap_content"
                         android:text="Loading..."
                         android:textSize="14sp"
-                        android:textColor="#86868B"
+                        android:textColor="?attr/colorOnSurfaceVariant"
                         android:layout_marginBottom="16dp" />
 
                     <com.google.android.material.button.MaterialButton
