@@ -15,14 +15,14 @@ This is the official Java reference implementation for integrating the **AdSurge
 ## Prerequisites
 
 - **Android Studio** Hedgehog | 2023.1.1 or newer.
-- **Android SDK**: API level 24 or higher.
+- **Android SDK**: API level 21 or higher.
 
 ## How to Build and Run
 
 1. Open **Android Studio**.
 2. Select **File > Open...** and navigate to the root directory of this repository (`JavaDemo`).
 3. Allow Gradle to sync the dependencies (this will download the necessary AdSurge SDK and Material Components).
-4. Connect an Android device (or start an Emulator) running Android 7.0 (API 24) or higher.
+4. Connect an Android device (or start an Emulator) running Android 5.0 (API 21) or higher.
 5. Click the **Run 'app'** button (the green play icon) in the toolbar, or run `./gradlew assembleDebug` in the terminal to build the APK manually.
 
 ## Code Structure Highlights
