@@ -5,7 +5,6 @@ This is the official Java reference implementation for integrating the **AdSurge
 ## Features Included
 
 - **Immersive UI**: Edge-to-edge support with window insets.
-- **Dynamic Monet Colors**: Implements Material You dynamic colors (`DynamicColors`), gracefully adjusting the flat UI cards to match the system theme while preserving visual contrast.
 - **5 Ad Formats**: Complete lifecycle implementations for:
   - Interstitial Ad
   - Rewarded Ad
@@ -29,7 +28,7 @@ This is the official Java reference implementation for integrating the **AdSurge
 ## Code Structure Highlights
 
 - `MainActivity.java`: Contains the core logic for initializing the AdSurge SDK (`AdSurgeAdSdk.getInstance().init(...)`) and auto-loading each of the 5 ad formats when initialization succeeds.
-- `activity_main.xml`: The main dashboard featuring a modern, flat Material 3 layout utilizing dynamic color attributes.
+- `activity_main.xml`: The main dashboard featuring a modern, flat Material 3 layout.
 - `item_native_ad.xml`: The custom UI layout template used exclusively for inflating Native Ads with proper aspect ratios and action button placement.
 
 ## Notes
