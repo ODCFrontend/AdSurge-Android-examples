@@ -1,6 +1,8 @@
 package com.example.javademo;
 
-import androidx.appcompat.app.AppCompatActivity;
+import android.app.Activity;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -10,12 +12,6 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
-import androidx.core.graphics.Insets;
-
-import com.bumptech.glide.Glide;
 
 import com.adsurge.adn.managers.AdSurgeAdSdk;
 import com.adsurge.adn.managers.AdSurgeAdSdkInitConfig;
@@ -40,10 +36,10 @@ import com.adsurge.adn.ads.appopen.AppOpenAdListener;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
-import com.google.android.material.color.DynamicColors;
-
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends Activity {
     private static final String TAG = "MainActivity";
     
     // AdSurge Demo Ad Unit IDs
@@ -83,16 +79,8 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        DynamicColors.applyToActivityIfAvailable(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        // Apply edge-to-edge insets
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
 
         initViews();
         setupListeners();
@@ -391,10 +379,10 @@ public class MainActivity extends AppCompatActivity {
         mAdHeadline.setText(ad.getHeadline());
         mAdBody.setText(ad.getBody());
         mAdActionButton.setText(ad.getCallToAction());
-        
+
         com.adsurge.adn.ads.nativead.Image icon = ad.getIcon();
         if (icon != null) {
-            Glide.with(this).asBitmap().load(icon.getUrl()).into(mAdIcon);
+            loadIcon(icon.getUrl(), mAdIcon);
         }
 
         mNativeAdView.setMediaView(mAdMediaView);
@@ -416,6 +404,36 @@ public class MainActivity extends AppCompatActivity {
 
         container.removeAllViews();
         container.addView(adView);
+    }
+
+    private void loadIcon(String url, ImageView imageView) {
+        ExecutorService executor = Executors.newSingleThreadExecutor();
+        executor.execute(() -> {
+            Bitmap bitmap = null;
+            java.net.HttpURLConnection connection = null;
+            try {
+                java.net.URL imageUrl = new java.net.URL(url);
+                connection = (java.net.HttpURLConnection) imageUrl.openConnection();
+                connection.setConnectTimeout(5000);
+                connection.setReadTimeout(5000);
+                connection.connect();
+                bitmap = BitmapFactory.decodeStream(connection.getInputStream());
+            } catch (Exception e) {
+                Log.w(TAG, "Failed to load icon: " + e.getMessage());
+            } finally {
+                if (connection != null) {
+                    connection.disconnect();
+                }
+            }
+
+            final Bitmap result = bitmap;
+            runOnUiThread(() -> {
+                if (result != null) {
+                    imageView.setImageBitmap(result);
+                }
+            });
+        });
+        executor.shutdown();
     }
 
     private void loadAppOpenAd() {
