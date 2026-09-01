@@ -13,4 +13,7 @@
     <color name="md_theme_light_onBackground">#1C1B1F</color>
     <color name="md_theme_light_surface">#FFFBFE</color>
     <color name="md_theme_light_onSurface">#1C1B1F</color>
+
+    <!-- Card background (replaces MaterialCardView surface color) -->
+    <color name="card_background">#F3EDF7</color>
 </resources>
