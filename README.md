@@ -33,5 +33,8 @@ This is the official Java reference implementation for integrating the **AdSurge
 
 ## Notes
 
+- **SDK Version**: This demo depends on `com.adsurge.sdk:adn-sdk:2.0.0` (see `app/build.gradle.kts`).
+- **CMP Consent Page (SDK 2.0.0+)**: For App Open, Interstitial and Rewarded ads, `showAd()` may first present an in-SDK consent page. If the user declines or the page fails to load, `onAdShowFailed` is called with `ERROR_CODE_COMPLIANCE` and the ad instance is consumed; the demo disables the Show button so you can load a new ad.
+- **Initialization Retry (SDK 2.0.0+)**: The SDK may retry initialization internally, so `onStartFailed` is only called once retries are exhausted. Server-side rejections are reported as `ERROR_CODE_INTERNAL_ERROR` with the message `ret=<value>, ret_msg=<server message>`.
 - **AppOps/Attribution Warnings**: To suppress common system `AppOps` logs, this demo uses `createAttributionContext("AdSurgeAd")` on Android 12 (API 31) and higher.
 - **Test Ad Units**: The project is currently configured with test Ad Unit IDs (e.g., APP_ID: `10034`). You must replace these with your actual production IDs before publishing your app.

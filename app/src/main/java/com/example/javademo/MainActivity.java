@@ -155,8 +155,10 @@ public class MainActivity extends Activity {
             
             @Override
             public void onStartFailed(AdSurgeAdError error) {
-                Log.e(TAG, "SDK initialization failed: " + error.getErrorMsg());
-                runOnUiThread(() -> tvSdkStatus.setText("SDK Initialization Failed: " + error.getErrorMsg()));
+                // SDK 2.0.0+ may retry init internally before this fires; server-side rejections
+                // arrive as ERROR_CODE_INTERNAL_ERROR with message "ret=<value>, ret_msg=<server message>".
+                Log.e(TAG, "SDK initialization failed: code=" + error.getErrorCode() + ", msg=" + error.getErrorMsg());
+                runOnUiThread(() -> tvSdkStatus.setText("SDK Initialization Failed (" + error.getErrorCode() + "): " + error.getErrorMsg()));
             }
         });
     }
@@ -185,8 +187,13 @@ public class MainActivity extends Activity {
             
             @Override
             public void onAdShowFailed(AdSurgeAd ad, AdSurgeAdError error) {
-                Log.e(TAG, "Interstitial Ad Failed to Show: " + error.getErrorMsg());
-                tvInterstitialStatus.setText("Show failed");
+                // Since SDK 2.0.0, show() may first present an in-SDK CMP consent page; if the user
+                // rejects it (or it fails to load), this fires with ERROR_CODE_COMPLIANCE and the ad
+                // instance is consumed. Load a new ad before showing again.
+                Log.e(TAG, "Interstitial Ad Failed to Show: code=" + error.getErrorCode() + ", msg=" + error.getErrorMsg());
+                tvInterstitialStatus.setText("Show failed (" + error.getErrorCode() + "): " + error.getErrorMsg());
+                btnShowInterstitial.setEnabled(false);
+                mInterstitialAd = null;
             }
 
             @Override
@@ -233,8 +240,11 @@ public class MainActivity extends Activity {
             
             @Override
             public void onAdShowFailed(AdSurgeAd ad, AdSurgeAdError error) {
-                Log.e(TAG, "Rewarded Ad Failed to Show: " + error.getErrorMsg());
-                tvRewardedStatus.setText("Show failed");
+                // See interstitial: a rejected CMP consent page (SDK 2.0.0+) consumes this ad instance.
+                Log.e(TAG, "Rewarded Ad Failed to Show: code=" + error.getErrorCode() + ", msg=" + error.getErrorMsg());
+                tvRewardedStatus.setText("Show failed (" + error.getErrorCode() + "): " + error.getErrorMsg());
+                btnShowRewarded.setEnabled(false);
+                mRewardedAd = null;
             }
 
             @Override
@@ -460,8 +470,11 @@ public class MainActivity extends Activity {
 
             @Override
             public void onAdShowFailed(AdSurgeAd ad, AdSurgeAdError error) {
-                Log.e(TAG, "App Open Ad Failed to Show: " + error.getErrorMsg());
-                tvAppOpenStatus.setText("Show failed");
+                // See interstitial: a rejected CMP consent page (SDK 2.0.0+) consumes this ad instance.
+                Log.e(TAG, "App Open Ad Failed to Show: code=" + error.getErrorCode() + ", msg=" + error.getErrorMsg());
+                tvAppOpenStatus.setText("Show failed (" + error.getErrorCode() + "): " + error.getErrorMsg());
+                btnShowAppOpen.setEnabled(false);
+                mAppOpenAd = null;
             }
 
             @Override
