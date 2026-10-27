@@ -19,5 +19,5 @@ android {
 }
 
 dependencies {
-    implementation("com.adsurge.sdk:adn-sdk:2.0.0")
+    implementation("com.adsurge.sdk:adn-sdk:2.0.1")
 }
